@@ -3,6 +3,21 @@
 const jokeElement = document.getElementById("joke");
 const jokeBtn = document.getElementById("newJoke");
 
+const generateJoke = async () => {
+  const config = {
+    headers: {
+      Accept: "application/json",
+    },
+  };
+  const res = await fetch("https://icanhazdadjoke.com/", config);
+  // console.log(res);
+  const data = await res.json();
+
+  jokeElement.innerText = data.joke;
+};
+
+jokeBtn.addEventListener("click", () => generateJoke());
+
 // const generateJoke = () => {
 //   const config = {
 //     headers: {
@@ -17,18 +32,18 @@ const jokeBtn = document.getElementById("newJoke");
 
 //Using async/await
 
-const generateJoke = async () => {
-  config = {
-    headers: {
-      Accept: "application/json",
-    },
-  };
+// const generateJoke = async () => {
+//   config = {
+//     headers: {
+//       Accept: "application/json",
+//     },
+//   };
 
-  const res = await fetch("https://icanhazdadjoke.com", config);
-  const data = await res.json();
-  jokeElement.innerText = data.joke;
-};
+//   const res = await fetch("https://icanhazdadjoke.com", config);
+//   const data = await res.json();
+//   jokeElement.innerText = data.joke;
+// };
 
-generateJoke();
+// generateJoke();
 
-jokeBtn.addEventListener("click", () => generateJoke());
+// jokeBtn.addEventListener("click", () => generateJoke());
